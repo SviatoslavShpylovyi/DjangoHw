@@ -1,5 +1,6 @@
 # Car Rental Web Application
 ## Setup
+```bash
 git clone <repo-url>
 cd DjangoHw/Rent
 python -m venv .venv
