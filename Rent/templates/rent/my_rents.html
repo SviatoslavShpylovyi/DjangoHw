@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}My rents{% endblock %}
+
+{% block content %}
+<h1>My rents</h1>
+    <div id="rent-list">
+    
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "{% static 'scripts/rents.js'  %}" defer></script>
+{% endblock %}

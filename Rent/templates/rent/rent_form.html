@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Rent {% endblock %}
+{% block content %}
+    <h1 class="bcenter">{% if is_edit %}Edit rent{% else %}Create rent{% endif %}</h1>
+   <form method="post" id="rent-form">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    {{ form.car }}
+    {{ form.pickup_location }}
+    {{ form.dropoff_location }}
+
+    {{ form.start_date }}
+    {{ form.end_date }}
+
+
+    <button class="btn" type="submit">Save</button>
+</form>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'scripts/rent_validation.js' %}" defer></script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<h1 class="bcenter">Create account</h1>
+
+<form method="post" novalidate>
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    <div>
+        <label for="{{ form.username.id_for_label }}">Username</label><br>
+        {{ form.username }}
+        {{ form.username.errors }}
+    </div>
+    <div>
+        <label for="{{ form.username.id_for_label }}">Email</label><br>
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+    <div>
+        <label for="{{ form.password1.id_for_label }}">Password</label><br>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+    </div>
+
+    <div>
+        <label for="{{ form.password2.id_for_label }}">Confirm password</label><br>
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+    </div>
+
+    <button class="btn" type="submit">Register</button>
+</form>
+
+<p class="bcenter">
+    Already have an account?
+    <a href="{% url 'login' %}">Login</a>
+</p>
+{% endblock %}

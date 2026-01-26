@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Car Rent{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+</head>
+<body>
+    {% include "includes/navbar.html" %}
+    {% include "includes/messages.html" %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+{% block scripts %}{% endblock %}
+</body>
+</html>

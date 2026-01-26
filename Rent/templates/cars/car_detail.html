@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Car details{% endblock %}
+
+{% block content %}
+<h1>{{ car.brand }} {{ car.model }}</h1>
+<div clas="car-details">
+
+{% if car.image %}
+  <img class="car-img-big" src="{{ car.image.url }}" alt="{{ car.brand }} {{ car.model }}" >
+{% else %}
+  <p>No image available.</p>
+{% endif %}
+<p>Year: {{ car.year }}</p>
+<p>Transmission: {{ car.transmission }}</p>
+<p>Fuel: {{ car.fuel_type }}</p>
+<p>Seats: {{ car.seats }}</p>
+<p>Price per day: {{ car.daily_price }}</p>
+{% if user.is_authenticated %}
+    <a href="{% url 'CarRent:rent_create' %}?car={{ car.id }}">
+        Rent this car
+    </a>
+{% else %}
+    <p>Please log in to rent this car.</p>
+{% endif %}
+</div>
+{% endblock %}

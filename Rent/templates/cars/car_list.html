@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Cars{% endblock %}
+{% block content %}
+    <h1>Available cars</h1>
+   <div class = "car-search">
+       <input type = "text" id = "car-search-js" placeholder="Search by brand or model"/>
+   </div>
+    <div id = "cars-list-js" class="grid" >
+
+    </div>
+
+{% endblock %}
+{% block scripts %}
+    <script src = "{% static 'scripts/cars.js'  %}" defer></script>
+{% endblock %}

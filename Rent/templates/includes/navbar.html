@@ -1,0 +1,32 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="{% url 'CarRent:car_list' %}" class="brand">CarRent</a>
+
+    <div class="nav-links">
+      <a class="nav-pill" href="{% url 'CarRent:car_list' %}">Cars</a>
+
+      {% if user.is_authenticated %}
+        <span class="user-badge">
+          {{ user.username }}
+        </span>
+
+        <a class="nav-pill" href="{% url 'CarRent:my_rents' %}">My rents</a>
+
+        <a class ="nav-pill" href="{% url 'CarRent:logout'  %}">Logout</a>
+      {% else %}
+        <a class="nav-pill" href="{% url 'login' %}">Login</a>
+        <a class="nav-pill" href="{% url 'CarRent:register' %}">Register</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
