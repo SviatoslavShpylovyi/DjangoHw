@@ -8,15 +8,21 @@
     {{ form.non_field_errors }}
 
     {{ form.car }}
+    {{ form.car.errors }}
     {{ form.pickup_location }}
+    {{ form.pickup_location.errors }}
     {{ form.dropoff_location }}
+    {{ form.dropoff_location.errors }}
 
     {{ form.start_date }}
+    {{ form.start_date.errors }}
     {{ form.end_date }}
+    {{ form.start_date.errors }}
 
-
+    <div id="rent-errors"></div>
     <button class="btn" type="submit">Save</button>
 </form>
+    
 
 {% endblock %}
 {% block scripts %}
