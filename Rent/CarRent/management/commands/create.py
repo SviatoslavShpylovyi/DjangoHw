@@ -52,9 +52,13 @@ class Command(BaseCommand):
         for _ in range(cars_count):
             brand, model = random.choice(brand_model)
 
-            image_name = f"{brand}_{model}.jpg"
-            image_path = os.path.join(settings.MEDIA_ROOT, "seed_images", image_name)
-
+            images_dir = os.path.join(settings.MEDIA_ROOT, "seed_images")
+            available_images = []
+            if os.path.exists(images_dir):
+                for file_name in os.listdir(images_dir):
+                    file_path = os.path.join(images_dir, file_name)
+                    if os.path.isfile(file_path) and file_name.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+                        available_images.append(file_name)
             car = Car(
                 brand=brand,
                 model=model,
@@ -66,9 +70,16 @@ class Command(BaseCommand):
                 is_active=True,
             )
 
-            if os.path.exists(image_path):
-                with open(image_path, "rb") as f:
-                    car.image.save(image_name, ContentFile(f.read()), save=False)
+            if available_images:
+                random_image_name = random.choice(available_images)
+                random_image_path = os.path.join(images_dir, random_image_name)
+
+                with open(random_image_path, "rb") as f:
+                    car.image.save(
+                        random_image_name,
+                        ContentFile(f.read()),
+                        save=False
+                    )
 
             car.save()
             cars.append(car)
